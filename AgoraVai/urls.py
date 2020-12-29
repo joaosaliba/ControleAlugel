@@ -19,5 +19,5 @@ import Aluguel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('aluguel/', include('Aluguel.urls')),
+    path('', include('Aluguel.urls')),
 ]
