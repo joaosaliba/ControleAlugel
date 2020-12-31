@@ -1,5 +1,14 @@
 {% extends 'base.html' %} {% block body %}
-<h1>Imovies</h1>
+<h1>Imoveis</h1>
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+</ul>
+{% endif %}
 <table class="table">
 
   <thead>
@@ -8,6 +17,7 @@
       <th scope="col">CEP</th>
       <th scope="col">ENDEREÇO</th>
       <th scope="col">EDITAR</th>
+      <th scope="col">DELETAR</th>
 
     
     </tr>
@@ -20,9 +30,12 @@
       <td>{{imovel.cep}}</td>
       <td>{{imovel.endereco}}</td>
       <td><a href="{% url 'editImovel' imovel.id %}"> 
-        <button type="button" class="btn btn-primary">
-       
+        <button type="button" class="btn btn-primary">       
        </button></a></td>
+       <td><a href="{% url 'deleteImovel' imovel.id %}"> 
+        <button type="button" class="btn btn-danger">       
+       </button></a></td>
+
 
      
     </tr>
