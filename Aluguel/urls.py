@@ -15,7 +15,7 @@ urlpatterns = [
     path('edit_pessoa/<int:pk>',views.edit_pessoa, name='edit_pessoa'),
     path('delete_pessoa/<int:pk>',views.delete_pessoa, name='delete_pessoa'),
 
-
+    path('alugar/',views.create_alugar, name='alugar'),
 
 
 

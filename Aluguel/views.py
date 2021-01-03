@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import ImovelForm
-from .models import Imovel, Pessoa
+from .models import Imovel, Pessoa,Aluguel
 from django.contrib import messages
 
 # Create your views here.
@@ -88,3 +88,20 @@ def delete_pessoa(request,pk):
      pessoa.delete()
      messages.success(request, "Pessoa deletada com Sucesso")
      return redirect('/list_pessoas')
+
+def create_alugar(request):
+     pessoas = Pessoa.objects.all()
+     imoveis = Imovel.objects.all()
+     aluguel = Aluguel()
+     if request.method == "GET":
+          return render(request,'aluguel/alugar.html',{'pessoas':pessoas, 'imoveis':imoveis,'aluguel':aluguel})
+     else:
+          aluguel.imovel = imoveis.get(id = request.POST['imovel'])
+          aluguel.pessoa = pessoas.get(id =request.POST['pessoa'])
+          aluguel.apartamento= request.POST.get('apartamento')
+          aluguel.valor_aluguel= request.POST.get('valor_aluguel')
+          aluguel.valor_multa= request.POST.get('valor_multa')
+          aluguel.valor_agua= request.POST.get('valor_agua')
+          aluguel.valor_luz= request.POST.get('valor_luz')
+          aluguel.save()
+          return redirect('/list_pessoas')
