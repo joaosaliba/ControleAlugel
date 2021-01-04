@@ -7,7 +7,7 @@
 <div class = "form-group">
     <div class="form-group">
      <label >Imovel</label>
-        <select class="form-control" required id='id_imovel' name='imovel'>
+        <select class="form-control" required id='id_imovel' name='imovel'value="{{aluguel.imovel.id}}">
 
             {% for imovel in imoveis %}
           <option value="{{imovel.id}}">{{imovel}}</option>
@@ -28,25 +28,25 @@
          
          <div class="form-group">
             <label >Apartamento</label>
-            <input type="text" class="form-control" id="apartamento" name="apartamento" placeholder="101">
+            <input type="text" class="form-control" id="apartamento" name="apartamento" value= "{{aluguel.apartamento}}" placeholder="101">
           </div>
 
   <div class="form-group">
     <label >Valor Aluguel</label>
-    <input type="number" class="form-control" id="valor_aluguel" name="valor_aluguel" placeholder="R$600,00">
+    <input type="number" class="form-control" id="valor_aluguel" name="valor_aluguel" value="{{aluguel.valor_aluguel}}" placeholder="R$600,00">
   </div>
 
   <div class="form-group">
     <label >Valor Multa</label>
-    <input type="number" class="form-control" id="valor_multa" name="valor_multa" placeholder="R$150,00">
+    <input type="number" class="form-control" id="valor_multa" name="valor_multa" value="{{aluguel.valor_multa}}" placeholder="R$150,00">
   </div>
   <div class="form-group">
     <label >Valor Agua</label>
-    <input type="number" class="form-control" id="valor_agua" name="valor_agua" placeholder="R$30,00">
+    <input type="number" class="form-control" id="valor_agua" name="valor_agua" value="{{aluguel.valor_agua}}" placeholder="R$30,00">
   </div>
   <div class="form-group">
     <label >Valor Luz</label>
-    <input type="number" class="form-control" id="valor_luz" name="valor_luz" placeholder="R$0,00">
+    <input type="number" class="form-control" id="valor_luz" name="valor_luz" value="{{aluguel.valor_luz}}"placeholder="R$0,00">
   </div>
 
 

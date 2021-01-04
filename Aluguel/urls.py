@@ -16,6 +16,10 @@ urlpatterns = [
     path('delete_pessoa/<int:pk>',views.delete_pessoa, name='delete_pessoa'),
 
     path('alugar/',views.create_alugar, name='alugar'),
+    path('edit_alugar/<int:pk>',views.edit_alugar,name='edit_alugar'),
+    path('list_alugueis',views.list_alugueis,name='list_alugueis'),
+    path('delete_aluguel/<int:pk>',views.delet_alugel,name='delete_aluguel'),
+
 
 
 

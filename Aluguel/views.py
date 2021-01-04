@@ -105,3 +105,19 @@ def create_alugar(request):
           aluguel.valor_luz= request.POST.get('valor_luz')
           aluguel.save()
           return redirect('/list_pessoas')
+
+def edit_alugar(request,pk):
+     aluguel = Aluguel.objects.get(id=pk)
+     pessoas = Pessoa.objects.all()
+     imoveis = Imovel.objects.all()
+
+     return render(request,'aluguel/alugar.html',{'pessoas':pessoas, 'imoveis':imoveis,'aluguel':aluguel})
+
+def list_alugueis(request):
+     alugueis= Aluguel.objects.all()
+     return render(request,'aluguel/list_alugueis.html',{'alugueis':alugueis})
+
+def delet_alugel(request,pk):
+     aluguel=Aluguel.objects.get(id=pk)
+     aluguel.delete()
+     return redirect('/list_alugueis')
