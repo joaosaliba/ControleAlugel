@@ -24,6 +24,12 @@
     <label>Telefone</label>
     <input type="text" maxlength="100" class="form-control" id="telefone"     name="telefone" value = "{{pessoa.telefone}}" placeholder="Telefone">
   </div>
+  <div class="form-group">
+    <label>Data nascimento
+      {{pessoa.nascimento|date:'dd-mm-Y'}}
+    </label>
+    <input id="nascimento" type="date" name="nascimento"  class="form-control" class="vDateField" value="{{pessoa.nascimento|date:'Y-m-d'}}">
+  </div>
   <div style="margin-top: 10px;">
   <button type="submit" class="btn btn-primary" >Adicionar Pessoa</button>
 </div>

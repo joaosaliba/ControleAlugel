@@ -60,6 +60,7 @@ def create_pessoa(request):
           pessoa.cpf= request.POST.get('cpf')
           pessoa.rg= request.POST.get('rg')
           pessoa.telefone= request.POST.get('telefone')
+          pessoa.nascimento = request.POST.get('nascimento')
           pessoa.save()
           messages.success(request,'Pessoa adiconado com sucesso')
           return redirect('/list_pessoas')
@@ -79,6 +80,7 @@ def edit_pessoa(request,pk):
           pessoa.cpf= request.POST.get('cpf')
           pessoa.rg= request.POST.get('rg')
           pessoa.telefone= request.POST.get('telefone')
+          pessoa.nascimento = request.POST.get('nascimento')
           pessoa.save()
           messages.success(request,'Pessoa adiconado com sucesso')
           return redirect('/list_pessoas')
@@ -103,6 +105,8 @@ def create_alugar(request):
           aluguel.valor_multa= request.POST.get('valor_multa')
           aluguel.valor_agua= request.POST.get('valor_agua')
           aluguel.valor_luz= request.POST.get('valor_luz')
+          aluguel.data_ingresso= request.POST.get('data_ingresso')
+
           aluguel.save()
           return redirect('/list_pessoas')
 

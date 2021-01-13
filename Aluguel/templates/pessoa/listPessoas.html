@@ -18,6 +18,7 @@
       <th scope="col">CPF</th>
       <th scope="col">RG</th>
       <th scope="col">TELEFONE</th>
+      <th scope="col">DATA NASCIMENTO</th>
       <th>EDITAR</th>
       <th>DELETAR</th>
 
@@ -34,6 +35,8 @@
       <td>{{pessoa.cpf}}</td>
       <td>{{pessoa.rg}}</td>
       <td>{{pessoa.telefone}}</td>
+      <td>{{pessoa.nascimento|date:'d-m-Y'}}</td>
+      
       <td><a href="{% url 'edit_pessoa' pessoa.id %}"> 
         <button type="button" class="btn btn-primary"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

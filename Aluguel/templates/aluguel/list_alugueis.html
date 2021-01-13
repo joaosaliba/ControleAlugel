@@ -13,6 +13,7 @@
       <th scope="col">VALOR MULTA</th>
       <th scope="col">VALOR AGUA</th>
       <th scope="col">VALOR LUZ</th>
+      <th scope="col">DATA ENTRADA/th>
       <th>DESALOCAR</th>
 
 
@@ -31,6 +32,7 @@
       <td>{{aluguel.valor_multa}}</td>
       <td>{{aluguel.valor_agua}}</td>
       <td>{{aluguel.valor_luz}}</td>
+      <td>{{aluguel.data_ingresso|date:'d-m-Y'}}</td>
 
       <td><a href="{% url 'delete_aluguel' aluguel.id %}"> 
         <button type="button" class="btn btn-danger">
