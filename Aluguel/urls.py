@@ -20,7 +20,7 @@ urlpatterns = [
     path('list_alugueis',views.list_alugueis,name='list_alugueis'),
     path('delete_aluguel/<int:pk>',views.delet_alugel,name='delete_aluguel'),
 
-
+    path('boleta/<int:pk>',views.gerar_boleta,name='boleta')
 
 
 

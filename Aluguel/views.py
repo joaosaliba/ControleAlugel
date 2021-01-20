@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import ImovelForm
-from .models import Imovel, Pessoa,Aluguel
+from .models import Imovel, Pessoa,Aluguel,Boleta
 from django.contrib import messages
 
 # Create your views here.
@@ -125,3 +125,31 @@ def delet_alugel(request,pk):
      aluguel=Aluguel.objects.get(id=pk)
      aluguel.delete()
      return redirect('/list_alugueis')
+
+import datetime
+
+def gerar_boleta(request,pk):
+     
+     boleta= Boleta()
+     aluguel= Aluguel.objects.get(id=pk)
+     if request.method == 'GET':
+          return render(request,'boleta/boleta.html',{'boleta':boleta} )
+          
+     else:
+          data_boleta = request.POST.get('data_boleta')
+          ano = int(str(data_boleta.split('-')[0]))
+          mes = int(str(data_boleta.split('-')[1]))
+
+          dia_vencimento=int(str(aluguel.data_ingresso).split('-')[2])
+     
+          if mes == 2:
+               if dia_vencimento== 29 or dia_vencimento== 30 or dia_vencimento== 31:
+                    dia_vencimento =28
+                    
+    
+          boleta.data_boleta_inicio=datetime.date(ano, mes, dia_vencimento)
+          boleta.data_boleta_final=boleta.data_boleta_inicio+ datetime.timedelta(days=30  )
+          boleta.aluguel=aluguel
+          boleta.save()
+
+          return    render(request,'boleta/boleta.html',{'boleta':boleta, 'dia':dia_vencimento} )

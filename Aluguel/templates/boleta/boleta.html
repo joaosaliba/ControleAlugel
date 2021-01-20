@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block body %}
+
+{{boleta.data_boleta_inicio}}
+{{boleta.data_boleta_final}}
+
+{{dia}}
+
+<form  method="POST">
+
+<div class="modal-body">
+  <label for="start">Start month:</label>
+
+  <input type="month" id="data_boleta" name="data_boleta"
+         min="2018-01" value="2021-01">
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<button type="submit" class="btn btn-primary">Save changes</button>
+</div>
+{% csrf_token %}
+
+</form>
+
+
+
+
+{% endblock %}

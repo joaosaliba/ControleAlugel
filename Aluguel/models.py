@@ -29,3 +29,12 @@ class Aluguel(models.Model):
     def __str__(self):
         return str(self.pessoa) + ', '+str(self.apartamento)
 
+class Boleta(models.Model):
+    data_boleta_inicio= models.DateField()
+    data_boleta_final= models.DateField()
+    aluguel = models.ForeignKey(Aluguel,on_delete=models.CASCADE)
+    
+    def __str__(self) :
+        return str(self.aluguel.pessoa) +\
+        ' ,'+str(self.aluguel.imovel)+\
+      ' , bolete DE '+str(self.data_boleta_inicio)+' A '+str(self.data_boleta_final)
