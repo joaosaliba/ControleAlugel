@@ -33,6 +33,13 @@ class Boleta(models.Model):
     data_boleta_inicio= models.DateField()
     data_boleta_final= models.DateField()
     aluguel = models.ForeignKey(Aluguel,on_delete=models.CASCADE)
+    imovel_b = models.ForeignKey(Imovel, on_delete=models.CASCADE)
+    pessoa_b = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
+    apartamento = models.CharField(max_length=200)
+    valor_aluguel = models.CharField(max_length=10)
+    valor_multa = models.CharField(max_length=10)
+    valor_agua = models.CharField(max_length=10)
+    
     
     def __str__(self) :
         return str(self.aluguel.pessoa) +\

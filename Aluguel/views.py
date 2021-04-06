@@ -108,7 +108,7 @@ def create_alugar(request):
           aluguel.data_ingresso= request.POST.get('data_ingresso')
 
           aluguel.save()
-          return redirect('/list_pessoas')
+          return redirect('/list_alugueis')
 
 def edit_alugar(request,pk):
      aluguel = Aluguel.objects.get(id=pk)
@@ -128,28 +128,44 @@ def delet_alugel(request,pk):
 
 import datetime
 
-def gerar_boleta(request,pk):
+def gerar_boleta(request):
      
      boleta= Boleta()
-     aluguel= Aluguel.objects.get(id=pk)
+     
      if request.method == 'GET':
           return render(request,'boleta/boleta.html',{'boleta':boleta} )
           
      else:
+          
           data_boleta = request.POST.get('data_boleta')
           ano = int(str(data_boleta.split('-')[0]))
           mes = int(str(data_boleta.split('-')[1]))
 
-          dia_vencimento=int(str(aluguel.data_ingresso).split('-')[2])
+          aluguel= Aluguel.objects.get(id=1)
+          pessoas = Pessoa.objects.all()
+          imoveis = Imovel.objects.all()
+
+
+          dia_vencimento=int(str(aluguel.data_ingresso).split('-')[2])     
      
           if mes == 2:
                if dia_vencimento== 29 or dia_vencimento== 30 or dia_vencimento== 31:
                     dia_vencimento =28
                     
     
+          boleta.aluguel= aluguel
+          boleta.imovel_b= imoveis.get(id = aluguel.imovel.id)
+          boleta.pessoa_b = pessoas.get(id = aluguel.pessoa.id)
+          boleta.apartamento=aluguel.apartamento
+          boleta.valor_aluguel=aluguel.valor_aluguel
+          boleta.valor_multa=aluguel.valor_multa
+          boleta.valor_agua=aluguel.valor_agua
           boleta.data_boleta_inicio=datetime.date(ano, mes, dia_vencimento)
           boleta.data_boleta_final=boleta.data_boleta_inicio+ datetime.timedelta(days=30  )
-          boleta.aluguel=aluguel
           boleta.save()
 
-          return    render(request,'boleta/boleta.html',{'boleta':boleta, 'dia':dia_vencimento} )
+          return    render(request,'boleta/boleta.html',{'boleta':boleta, 'dia':dia_vencimento, 'aluguel':aluguel} )
+
+def list_boletas(request):
+     boletas = Boleta.objects.all()
+     return render(request,'boleta/list_boletas.html',{'boletas':boletas} )

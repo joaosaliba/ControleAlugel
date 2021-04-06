@@ -4,7 +4,6 @@
 {{boleta.data_boleta_final}}
 
 {{dia}}
-
 <form  method="POST">
 
 <div class="modal-body">
@@ -21,6 +20,42 @@
 
 </form>
 
+
+
+
+<div class="row">
+
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        <div class="tab">
+        Nome : {{boleta.aluguel.pessoa.nome}} 
+        CPF:{{boleta.aluguel.pessoa.cpf}}
+        <br/>
+        Imovel : {{boleta.aluguel.imovel.endereco}} 
+        Apartamento: {{boleta.aluguel.apartamento}}
+      </div>
+        
+        <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
